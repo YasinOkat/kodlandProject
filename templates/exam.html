@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Page</title>
+    <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+      <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+      <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+      <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
+
+  <div style="width: 100%; max-width: 1200px;">
+    <header>
+        <h1>Exam Page</h1>
+    </header>
+    <main>
+        <section class="question" id="question1">
+            <h2>Question 1:</h2>
+            <p>What is the capital of France?</p>
+            <ul>
+                <li><input type="radio" name="q1" value="a"> a) Paris</li>
+                <li><input type="radio" name="q1" value="b"> b) London</li>
+                <li><input type="radio" name="q1" value="c"> c) Madrid</li>
+            </ul>
+            <button onclick="nextQuestion(2)">Next</button>
+        <p>Time remaining: <span id="timer1">10</span> seconds</p>
+
+        </section>
+        <section class="question" id="question2" style="display: none;">
+            <h2>Question 2:</h2>
+            <p>Which planet is known as the Red Planet?</p>
+            <ul>
+                <li><input type="radio" name="q2" value="a"> a) Venus</li>
+                <li><input type="radio" name="q2" value="b"> b) Mars</li>
+                <li><input type="radio" name="q2" value="c"> c) Jupiter</li>
+            </ul>
+            <button onclick="nextQuestion(3)">Next</button>
+        <p>Time remaining: <span id="timer2">30</span> seconds</p>
+
+        </section>
+        <!-- More questions go here... -->
+    </main>
+    <footer>
+        <button id="submit">Submit</button>
+    </footer>
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      </div>
+</body>
+</html>
