@@ -70,10 +70,10 @@ def exam_page():
 @app.route('/submit_exam', methods=['POST', 'GET'])
 @login_required
 def submit_exam():
-    user_score = calculate_user_score(request.form)  # Replace this with your scoring logic
+    user_score = calculate_user_score(request.form)
 
-    print("User ID:", current_user.id)  # Debug: Print user ID
-    print("User Score:", user_score)  # Debug: Print calculated user score
+    print("User ID:", current_user.id)
+    print("User Score:", user_score)
 
     existing_score = ExamScore.query.filter_by(user_id=current_user.id).first()
     if existing_score:
@@ -91,7 +91,7 @@ def submit_exam():
 @app.route('/exam-leadership')
 def exam_leadership_page():
     exam_scores = ExamScore.query.order_by(ExamScore.score.desc()).all()
-    print(exam_scores)  # Print to the console to debug
+    print(exam_scores)
     return render_template('exam-leadership.html', exam_scores=exam_scores)
 
 
@@ -102,8 +102,8 @@ def calculate_user_score(user_answers):
         'q3': 'a'
     }
 
-    print("Correct Answers:", correct_answers)  # Debug: Print correct answers
-    print("User Answers:", user_answers)        # Debug: Print user answers
+    print("Correct Answers:", correct_answers)
+    print("User Answers:", user_answers)
 
     user_score = 0
     for question, user_answer in user_answers.items():

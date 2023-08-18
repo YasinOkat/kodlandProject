@@ -41,7 +41,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Page</title>
+    <title>Sınav Sayfası</title>
     <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
       <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
@@ -143,11 +143,12 @@
       <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
         <section class="question" id="question1">
             <h2>Soru 1:</h2>
-            <p>What is the capital of France?</p>
+            <p>Fransa'nın başkenti hangisidir?</p>
             <ul>
                 <li><input type="radio" name="q1" value="a"> a) Paris</li>
-                <li><input type="radio" name="q1" value="b"> b) London</li>
-                <li><input type="radio" name="q1" value="c"> c) Madrid</li>
+                <li><input type="radio" name="q1" value="b"> b) Londra</li>
+                <li><input type="radio" name="q1" value="c"> c) Mardin</li>
+                <li><input type="radio" name="q1" value="d"> d) Lyon</li>
             </ul>
             <button type="button" onclick="nextQuestion(2)">Sonraki</button>
 
@@ -157,11 +158,12 @@
         </section>
         <section class="question" id="question2" style="display: none;">
             <h2>Soru 2:</h2>
-            <p>Which planet is known as the Red Planet?</p>
+            <p>Hangi gezegen Kızıl Gezegen olarak bilinmektedir?</p>
             <ul>
-                <li><input type="radio" name="q2" value="a"> a) Venus</li>
+                <li><input type="radio" name="q2" value="a"> a) Venüs</li>
                 <li><input type="radio" name="q2" value="b"> b) Mars</li>
-                <li><input type="radio" name="q2" value="c"> c) Jupiter</li>
+                <li><input type="radio" name="q2" value="c"> c) Jüpiter</li>
+                <li><input type="radio" name="q2" value="d"> c) Neptün</li>
             </ul>
             <button type="button" onclick="nextQuestion(3)">Sonraki</button>
         <p>Kalan süre: <span id="timer2">60</span> saniye</p>
@@ -169,11 +171,12 @@
         </section>
         <section class="question" id="question3" style="display: none;">
             <h2>Soru 2:</h2>
-            <p>What is your name?</p>
+            <p>Atatürk'ün doğum tarihi nedir?</p>
             <ul>
-                <li><input type="radio" name="q3" value="a"> a) Ahmet</li>
-                <li><input type="radio" name="q3" value="b"> b) Mehmet</li>
-                <li><input type="radio" name="q3" value="c"> c) Jupiter</li>
+                <li><input type="radio" name="q3" value="a"> a) 1881</li>
+                <li><input type="radio" name="q3" value="b"> b) 1923</li>
+                <li><input type="radio" name="q3" value="c"> c) 1869</li>
+                <li><input type="radio" name="q3" value="d"> d) 1888</li>
             </ul>
             <button onclick="nextQuestion(3)">Sonraki</button>
         <p>Kalan süre: <span id="timer3">60</span> saniye</p>
