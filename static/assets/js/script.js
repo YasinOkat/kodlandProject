@@ -1,5 +1,5 @@
 let currentQuestion = 1;
-let totalTime = 10; // Total time for each question in seconds
+let totalTime = 60;
 let timerInterval;
 
 function nextQuestion(next) {
@@ -7,7 +7,7 @@ function nextQuestion(next) {
     currentQuestion = next;
     document.getElementById(`question${currentQuestion}`).style.display = 'block';
 
-    clearInterval(timerInterval); // Clear the previous timer
+    clearInterval(timerInterval);
     startTimer();
 }
 
@@ -27,5 +27,5 @@ function startTimer() {
     }, 1000);
 }
 
-// Start the timer for the first question
+
 startTimer();

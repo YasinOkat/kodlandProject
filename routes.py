@@ -87,7 +87,6 @@ def submit_exam():
     return redirect(url_for('exam_leadership_page'))
 
 
-
 @app.route('/exam-leadership')
 def exam_leadership_page():
     exam_scores = ExamScore.query.order_by(ExamScore.score.desc()).all()
@@ -97,9 +96,11 @@ def exam_leadership_page():
 
 def calculate_user_score(user_answers):
     correct_answers = {
-        'q1': 'a',
+        'q1': 'b',
         'q2': 'b',
-        'q3': 'a'
+        'q3': 'b',
+        'q4': 'a',
+        'q5': 'b'
     }
 
     print("Correct Answers:", correct_answers)

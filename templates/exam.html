@@ -37,6 +37,7 @@
     nextTimer.style.display = 'block';
 }
 
+
 </script>
 
     <meta charset="UTF-8">
@@ -143,12 +144,12 @@
       <form id="examForm" action="{{ url_for('submit_exam') }}" method="POST">
         <section class="question" id="question1">
             <h2>Soru 1:</h2>
-            <p>Fransa'nın başkenti hangisidir?</p>
+            <p>Görüntü İşleme'de segmentasyon nedir?</p>
             <ul>
-                <li><input type="radio" name="q1" value="a"> a) Paris</li>
-                <li><input type="radio" name="q1" value="b"> b) Londra</li>
-                <li><input type="radio" name="q1" value="c"> c) Mardin</li>
-                <li><input type="radio" name="q1" value="d"> d) Lyon</li>
+                <li><input type="radio" name="q1" value="a"> a) Bir görüntüyü sadece siyah-beyaz yapma işlemidir.</li>
+                <li><input type="radio" name="q1" value="b"> b) Görüntüdeki nesneleri farklı kısımlara bölmek anlamına gelir.</li>
+                <li><input type="radio" name="q1" value="c"> c) Görüntüleri bulut üzerine yedeklemek için kullanılır.</li>
+                <li><input type="radio" name="q1" value="d"> d) Görüntüdeki renkleri değiştirmek anlamına gelir.</li>
             </ul>
             <button type="button" onclick="nextQuestion(2)">Sonraki</button>
 
@@ -158,32 +159,59 @@
         </section>
         <section class="question" id="question2" style="display: none;">
             <h2>Soru 2:</h2>
-            <p>Hangi gezegen Kızıl Gezegen olarak bilinmektedir?</p>
+            <p>Evrişimli sinir ağları (Convolutional Neural Networks - CNN) neden görüntü işlemede yaygın olarak kullanılır?</p>
             <ul>
-                <li><input type="radio" name="q2" value="a"> a) Venüs</li>
-                <li><input type="radio" name="q2" value="b"> b) Mars</li>
-                <li><input type="radio" name="q2" value="c"> c) Jüpiter</li>
-                <li><input type="radio" name="q2" value="d"> c) Neptün</li>
+                <li><input type="radio" name="q2" value="a"> a) Yalnızca metin verilerini işlemek için kullanılır.</li>
+                <li><input type="radio" name="q2" value="b"> b) Görüntü verilerinin özelliklerini çıkarmak için uygundur.</li>
+                <li><input type="radio" name="q2" value="c"> c) Yalnızca ses verilerini işlemek için kullanılır.</li>
+                <li><input type="radio" name="q2" value="d"> d) Sadece sayısal veriler üzerinde işlem yapabilir.</li>
             </ul>
             <button type="button" onclick="nextQuestion(3)">Sonraki</button>
         <p>Kalan süre: <span id="timer2">60</span> saniye</p>
 
         </section>
         <section class="question" id="question3" style="display: none;">
-            <h2>Soru 2:</h2>
-            <p>Atatürk'ün doğum tarihi nedir?</p>
+            <h2>Soru 3:</h2>
+            <p>Doğal Dil İşleme (NLP) nedir?</p>
             <ul>
-                <li><input type="radio" name="q3" value="a"> a) 1881</li>
-                <li><input type="radio" name="q3" value="b"> b) 1923</li>
-                <li><input type="radio" name="q3" value="c"> c) 1869</li>
-                <li><input type="radio" name="q3" value="d"> d) 1888</li>
+                <li><input type="radio" name="q3" value="a"> a) Yalnızca yazılı metinleri anlamak için kullanılır.</li>
+                <li><input type="radio" name="q3" value="b"> b) Dil öğrenme için kullanılan bir yapay zeka yöntemidir.</li>
+                <li><input type="radio" name="q3" value="c"> c) Görüntüleri analiz etmek için kullanılır.</li>
+                <li><input type="radio" name="q3" value="d"> d) Sadece matematiksel verileri işlemek için kullanılır.</li>
             </ul>
-            <button onclick="nextQuestion(3)">Sonraki</button>
+            <button type="button" onclick="nextQuestion(4)">Sonraki</button>
         <p>Kalan süre: <span id="timer3">60</span> saniye</p>
+        </section>
 
-    <footer>
+          <section class="question" id="question4" style="display: none;">
+            <h2>Soru 4:</h2>
+            <p>Bir Python programında dışarıdan veri girişi nasıl alınır?</p>
+            <ul>
+                <li><input type="radio" name="q4" value="a"> a) "input()" fonksiyonu ile.</li>
+                <li><input type="radio" name="q4" value="b"> b) Yalnızca metin girişi alabilir, diğer veri türlerini desteklemez.</li>
+                <li><input type="radio" name="q4" value="c"> c) Sadece web servisler üzerinden alınabilir.</li>
+                <li><input type="radio" name="q4" value="d"> d) "print()" fonksiyonu ile.</li>
+            </ul>
+            <button type="button" onclick="nextQuestion(5)">Sonraki</button>
+        <p>Kalan süre: <span id="timer4">60</span> saniye</p>
+        </section>
+
+          <section class="question" id="question5" style="display: none;">
+            <h2>Soru 5:</h2>
+            <p>Python programlama dili neden yapay zeka (AI) geliştirme için tercih edilir?</p>
+            <ul>
+                <li><input type="radio" name="q5" value="a"> a) Sadece Windows işletim sistemi üzerinde çalışabilir.</li>
+                <li><input type="radio" name="q5" value="b"> b) Geniş bir kütüphane ve topluluk desteği sağlar.</li>
+                <li><input type="radio" name="q5" value="c"> c) Sadece metin verileri üzerinde işlem yapabilir.</li>
+                <li><input type="radio" name="q5" value="d"> d) Yalnızca küçük veri kümeleri için uygundur.</li>
+            </ul>
+            <footer>
             <button href="{{ url_for('submit_exam') }}" class="btn-get-started">Sınavı bitir</button>
         </footer>
+        <p>Kalan süre: <span id="timer5">60</span> saniye</p>
+        </section>
+
+
           </form>
 
     </main>
