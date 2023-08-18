@@ -37,16 +37,29 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="{{ url_for('home_page') }}">Ana Sayfa</a></li>
+
+          {% if current_user.is_authenticated %}
           <li><a class="nav-link scrollto" href="exam">Sınav</a></li>
-          <li><a class="nav-link scrollto" href="#services">Sınav Liderlik Tablosu</a></li>
+          {% endif %}
+          <li><a class="nav-link scrollto" href="{{ url_for('exam_leadership_page') }}">Sınav Liderlik Tablosu</a></li>
           <li><a class="nav-link scrollto" href="#contact">Hakkında</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a class="getstarted scrollto">Hoşgeldin {{ current_user.username }}</a></li>
+          <li><a class="getstarted scrollto" href="{{ url_for('logout_page') }}">Çıkış</a></li>
+          {% else %}
           <li><a class="getstarted scrollto" href="{{ url_for('login_page') }}">Giriş</a></li>
           <li><a class="getstarted scrollto" href="{{ url_for('register_page') }}">Kayıt</a></li>
+          {% endif %}
+
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+
       </nav>
     </div>
   </header>
+
+
 
   <main id="weather1">
     <section id="weather" class="contact">
@@ -55,7 +68,18 @@
                 <br>
                 <h2>Giriş</h2>
                 <form method="post" class="form-signin" style="color.white">
-                    {{ form.hidden_tag() }}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"&times;</span>
+                                    </button>
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="" style="width: 15%;">
                     <br>
                     <h1 class="h3 mb-3 font-weight-normal " >

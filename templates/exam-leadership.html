@@ -86,23 +86,27 @@
         <div class="container d-flex align-items-center justify-content-between">
             <h1 class="logo"><a href="/">Kodland</a></h1>
             <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="{{ url_for('home_page') }}">Ana Sayfa</a></li>
-                    {% if current_user.is_authenticated %}
-                    <li><a class="nav-link scrollto" href="exam">Sınav</a></li>
-                    {% endif %}
-                    <li><a class="nav-link scrollto" href="{{ url_for('exam_leadership_page') }}">Sınav Liderlik Tablosu</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Hakkında</a></li>
-                    {% if current_user.is_authenticated %}
-                    <li><a class="getstarted scrollto">Hoşgeldin {{ current_user.username }}</a></li>
-                    <li><a class="getstarted scrollto" href="{{ url_for('logout_page') }}">Çıkış</a></li>
-                    {% else %}
-                    <li><a class="getstarted scrollto" href="{{ url_for('login_page') }}">Giriş</a></li>
-                    <li><a class="getstarted scrollto" href="{{ url_for('register_page') }}">Kayıt</a></li>
-                    {% endif %}
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav>
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('home_page') }}">Ana Sayfa</a></li>
+
+          {% if current_user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="exam">Sınav</a></li>
+          {% endif %}
+          <li><a class="nav-link scrollto" href="{{ url_for('exam_leadership_page') }}">Sınav Liderlik Tablosu</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Hakkında</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a class="getstarted scrollto">Hoşgeldin {{ current_user.username }}</a></li>
+          <li><a class="getstarted scrollto" href="{{ url_for('logout_page') }}">Çıkış</a></li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="{{ url_for('login_page') }}">Giriş</a></li>
+          <li><a class="getstarted scrollto" href="{{ url_for('register_page') }}">Kayıt</a></li>
+          {% endif %}
+
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+      </nav>
         </div>
     </header>
     <header class="header">
