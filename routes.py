@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from weather import main as get_weather
 from forms import RegisterForm, LoginForm
-from models import User
+from models import User, ExamScore
 from main import app
 from main import db
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -61,9 +61,56 @@ def logout_page():
     flash("Çıkış yapıldı", category='info')
     return redirect(url_for('home_page'))
 
+
 @app.route('/exam')
 def exam_page():
     return render_template('exam.html')
+
+
+@app.route('/submit_exam', methods=['POST', 'GET'])
+@login_required
+def submit_exam():
+    user_score = calculate_user_score(request.form)  # Replace this with your scoring logic
+
+    print("User ID:", current_user.id)  # Debug: Print user ID
+    print("User Score:", user_score)  # Debug: Print calculated user score
+
+    existing_score = ExamScore.query.filter_by(user_id=current_user.id).first()
+    if existing_score:
+        existing_score.score = user_score
+    else:
+        exam_score = ExamScore(user_id=current_user.id, score=user_score)
+        db.session.add(exam_score)
+
+    db.session.commit()
+
+    return redirect(url_for('exam_leadership_page'))
+
+
+
+@app.route('/exam-leadership')
+def exam_leadership_page():
+    exam_scores = ExamScore.query.order_by(ExamScore.score.desc()).all()
+    print(exam_scores)  # Print to the console to debug
+    return render_template('exam-leadership.html', exam_scores=exam_scores)
+
+
+def calculate_user_score(user_answers):
+    correct_answers = {
+        'q1': 'a',
+        'q2': 'b',
+        'q3': 'a'
+    }
+
+    print("Correct Answers:", correct_answers)  # Debug: Print correct answers
+    print("User Answers:", user_answers)        # Debug: Print user answers
+
+    user_score = 0
+    for question, user_answer in user_answers.items():
+        if question in correct_answers and user_answer == correct_answers[question]:
+            user_score += 20
+
+    return user_score
 
 
 if __name__ == '__main__':

@@ -38,7 +38,7 @@
           {% if current_user.is_authenticated %}
           <li><a class="nav-link scrollto" href="exam">Sınav</a></li>
           {% endif %}
-          <li><a class="nav-link scrollto" href="#services">Sınav Liderlik Tablosu</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('exam_leadership_page') }}">Sınav Liderlik Tablosu</a></li>
           <li><a class="nav-link scrollto" href="#contact">Hakkında</a></li>
           {% if current_user.is_authenticated %}
           <li><a class="getstarted scrollto">Hoşgeldin {{ current_user.username }}</a></li>
@@ -87,7 +87,9 @@
             <br>
             <div class="col-sm">
           <div class="col-sm ">
-            {% if day1_data %}
+              {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% else %}
             <h3>{{day1_name}} hava durumu</h3>
             Gece: {{ day1_data.min_temp }}°C, Gündüz: {{ day1_data.max_temp }}°C <br>
             <img src="{{ day1_data.icon }}" alt="Icon">

@@ -16,12 +16,17 @@ class WeatherData:
 
 
 def get_current_weather(cityName, API_key):
+    resp_only = requests.get(
+        f'http://api.weatherapi.com/v1/forecast.json?key={API_key}&q={cityName}&days=3&aqi=no&alerts=no')
     resp = requests.get(
         f'http://api.weatherapi.com/v1/forecast.json?key={API_key}&q={cityName}&days=3&aqi=no&alerts=no').json()
 
+    if resp_only.status_code != 200:
+        error_message = "Invalid city or an error occurred while fetching weather data."
+        return error_message, None, None, None, None, None
+
     forecast_days = resp['forecast']['forecastday']
 
-    # Extract forecast data for the first day
     day1 = forecast_days[0]['day']
     day1_data = WeatherData(
         icon=day1['condition']['icon'],

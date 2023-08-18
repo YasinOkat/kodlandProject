@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Kodland Sınav Platformu</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exam Leadership Board</title>
+    <style>
+        body, h1, h2, h3, p, table {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
+
+        /* Main content styles */
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <h1 class="logo"><a href="/">Kodland</a></h1>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="{{ url_for('home_page') }}">Ana Sayfa</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li><a class="nav-link scrollto" href="exam">Sınav</a></li>
+                    {% endif %}
+                    <li><a class="nav-link scrollto" href="{{ url_for('exam_leadership_page') }}">Sınav Liderlik Tablosu</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Hakkında</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li><a class="getstarted scrollto">Hoşgeldin {{ current_user.username }}</a></li>
+                    <li><a class="getstarted scrollto" href="{{ url_for('logout_page') }}">Çıkış</a></li>
+                    {% else %}
+                    <li><a class="getstarted scrollto" href="{{ url_for('login_page') }}">Giriş</a></li>
+                    <li><a class="getstarted scrollto" href="{{ url_for('register_page') }}">Kayıt</a></li>
+                    {% endif %}
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+    <header class="header">
+        <h1 class="title">Exam Leadership Board</h1>
+    </header>
+    <main class="main">
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <th>Puan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in exam_scores %}
+                <tr>
+                    <td>{{ score.user.username }}</td>
+                    <td>{{ score.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
